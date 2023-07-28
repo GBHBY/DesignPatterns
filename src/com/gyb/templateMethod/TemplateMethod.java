@@ -1,7 +1,6 @@
 package com.gyb.templateMethod;
 
-import java.util.concurrent.locks.AbstractQueuedSynchronizer;
-import java.util.concurrent.locks.ReentrantLock;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author gb
@@ -9,38 +8,59 @@ import java.util.concurrent.locks.ReentrantLock;
  * description:模板方法
  * @date 2021/8/15 18:13
  */
-
+@Slf4j
 public class TemplateMethod {
     public static void main(String[] args) {
-        Father sun = new Sun();
-        sun.start();
+        Father sun = new EldestSon();
+        sun.marry();
+        Father second = new SecondSon();
+        second.marry();
     }
 
 }
-
+@Slf4j
 abstract class Father {
-    public void start() {
-        run();
-        smile();
-
+    public void marry() {
+        findGirlFriend();
+        holdingHands();
+        getMarried();
     }
 
-    abstract void run();
+    void holdingHands(){
+     log.info("牵女孩的手见父母");
+    }
 
-    abstract void smile();
+    abstract void findGirlFriend();
+
+    abstract void getMarried();
 
 
 }
 
-class Sun extends Father {
+@Slf4j
+class EldestSon extends Father {
 
     @Override
-    void run() {
-
+    void findGirlFriend() {
+        log.info("大儿子找到了女朋友");
     }
 
     @Override
-    void smile() {
+    void getMarried() {
+        log.info("大儿子结婚了");
+    }
+}
 
+@Slf4j
+class SecondSon extends Father{
+
+    @Override
+    void findGirlFriend() {
+        log.info("二儿子找到了女朋友");
+    }
+
+    @Override
+    void getMarried() {
+        log.info("二儿子结婚了");
     }
 }

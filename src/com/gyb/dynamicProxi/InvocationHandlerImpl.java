@@ -1,5 +1,7 @@
 package com.gyb.dynamicProxi;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
@@ -10,6 +12,7 @@ import java.lang.reflect.Method;
  * @date 2021/8/12 15:13
  */
 
+@Slf4j
 public class InvocationHandlerImpl implements InvocationHandler {
 
     private Object sing;
@@ -20,14 +23,13 @@ public class InvocationHandlerImpl implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println("开始调用代理方法");
-        System.out.println("method： " + method);
-        System.out.println("method名：  " + method.getName());
+        log.info("开始调用代理方法");
+        log.info("method:【{}】", method);
+        log.info("method名：【{}】",method.getName());
+        log.info("method param:【{}】", args);
         Object invoke = method.invoke(sing, args);
-
-        System.out.println("调用之后");
-
-
         return invoke;
     }
+
+
 }

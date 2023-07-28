@@ -11,7 +11,7 @@ public interface Broker {
     /**
      * 赚钱
      */
-    void getMoney();
+    void getMoney(Integer money);
 
     /**
      * 唱歌
