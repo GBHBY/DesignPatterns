@@ -1,12 +1,8 @@
 package com.gyb.dynamicProxi;
 
-import com.gyb.SpringConfig;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
-import java.util.Hashtable;
+import java.lang.reflect.Proxy;
 
 /**
  * Description:
@@ -21,6 +17,13 @@ import java.util.Hashtable;
  */
 @Component("test1")
 public class Test {
-    private Hashtable<Object,Object> objectObjectHashtable = new Hashtable<>();
+    public static void main(String[] args) {
+        Broker broker = new Singer();
+        Broker o = ProxyFactory.getProxy(broker);
+        o.getMoney(123);
+        o.sing();
+
+
+    }
 
 }

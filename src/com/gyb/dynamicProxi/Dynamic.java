@@ -35,7 +35,7 @@ public class Dynamic {
 
         Broker o = (Broker) Proxy.newProxyInstance(classLoader, interfaces, invocationHandler);
         o.sing();
-        o.getMoney();
+        o.getMoney(3333);
 
     }
 }

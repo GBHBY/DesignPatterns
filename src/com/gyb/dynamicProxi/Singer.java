@@ -9,8 +9,8 @@ package com.gyb.dynamicProxi;
 
 public class Singer implements Broker {
     @Override
-    public void getMoney() {
-        System.out.println("赚钱了");
+    public void getMoney(Integer money) {
+        System.out.println("赚了" + money);
     }
 
     @Override

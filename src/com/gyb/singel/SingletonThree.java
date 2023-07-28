@@ -13,7 +13,6 @@ public class SingletonThree {
      *  第二个线程进入27行的时候就已经拿到了对象，但是对象的值都是初始值，就会导致出现bug
      **/
     private static volatile SingletonThree SINGLETON_Two;
-    private int i = 8;
 
     private SingletonThree() {
     }
